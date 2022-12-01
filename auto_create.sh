@@ -6,7 +6,7 @@ function CreateFolder() {
     read title
 
     case ${program_name} in
-    [Pp][Yy][Tt][Hh][Oo][Nn])
+    [Pp][Yy][Tt][Hh][Oo][Nn] | [Pp][Yy])
         fileSuffix="py"
         titlePath=./leetcode/Python/code/${title}
         ;;

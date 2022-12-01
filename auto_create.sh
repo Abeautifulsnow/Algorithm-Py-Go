@@ -1,32 +1,33 @@
 #!/usr/bin/env bash
 function CreateFolder() {
-    echo "Input Python or Go:"
+    echo "Input Python or Go(Case-Insensitive):"
     read program_name
     echo "Input the title, which will be the sub-folder name:"
     read title
 
-    if [[ ${program_name} == "Python" || ${program_name} == "python" ]]
-    then
+    case ${program_name} in
+    [Pp][Yy][Tt][Hh][Oo][Nn])
         fileSuffix="py"
         titlePath=./leetcode/Python/code/${title}
-    elif [[ ${program_name} == "Go" || ${program_name} == "go" ]] 
-    then
+        ;;
+
+    [Gg][Oo])
         fileSuffix="go"
         titlePath=./leetcode/Go/code/${title}
-    else
+        ;;
+    *)
         echo "Input error, please try again."
         exit 1
-    fi
+        ;;
+    esac
 
     FileArray=(${title}.${fileSuffix} README.md)
     echo "Create ${title} folder: ${title_path}"
-    for i in ${FileArray[@]}
-    do
+    for i in ${FileArray[@]}; do
         i_path=${titlePath}/${i}
         echo "filepath: ${i_path}"
         mkdir -p "${titlePath}"
-        if [[ ! -e ${i_path} ]]
-        then
+        if [[ ! -e ${i_path} ]]; then
             touch "${i_path}"
         fi
     done

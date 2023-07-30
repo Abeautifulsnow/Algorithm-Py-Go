@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set -e
 
 function create_branch_if_not_exist() {
     default_branch=$1

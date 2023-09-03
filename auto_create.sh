@@ -6,12 +6,13 @@ function _create_folder() {
 	title_path=$3
 
 	FileArray=("${title}"."${fileSuffix}" README.md)
-    echo "Create ${title} folder: ${title_path}"
     for i in "${FileArray[@]}"; do
         i_path=${title_path}/${i}
-        echo "filepath: ${i_path}"
-        mkdir -p "${title_path}"
+
+        [[ -d "${title_path}" ]] || mkdir -p "${title_path}"
+		echo "Create ${title} folder: ${title_path}"
         if [[ ! -e ${i_path} ]]; then
+			echo "filepath: ${i_path}"
             touch "${i_path}"
         fi
     done

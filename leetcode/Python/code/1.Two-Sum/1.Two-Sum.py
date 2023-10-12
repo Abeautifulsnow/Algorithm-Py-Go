@@ -15,19 +15,28 @@ No.1
 from typing import List
 
 
-class Solution(object):
+class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
+        """_summary_
+
+        Args:
+            nums (List[int]): _description_
+            target (int): _description_
+
+        Returns:
+            List[int]: _description_
         """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        h = {}
-        for i, j in enumerate(nums):
-            k = target - j
-            if k in h:
-                return [h[k], i]
-            h[j] = i
+        tmp = {}
+
+        for i, v in enumerate(nums):
+            another = target - v
+
+            if another in tmp:
+                return [tmp[another], i]
+
+            tmp[v] = i
+
+        return []
 
 
 class Solution2(object):
@@ -43,8 +52,8 @@ class Solution2(object):
                     return [i, j]
 
 
-nums = [5, 5, 5]
-target = 10
-d = Solution2()
+nums = [5, 7, 6]
+target = 12
+d = Solution()
 e = d.twoSum(nums, target)
-print(*list(e))
+print(e)
